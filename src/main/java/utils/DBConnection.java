@@ -66,7 +66,7 @@ public class DBConnection {
     }
 
     //Sentencias de modificaciones a la DB
-    public void update(String query, Object... values) {
+    public Boolean update(String query, Object... values) {
         try {
             this.pstm = this.con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
@@ -74,8 +74,10 @@ public class DBConnection {
                 this.pstm.setObject(i + 1, values[i]);
             }
             this.res = this.pstm.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

@@ -24,19 +24,25 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ProjectServlet", urlPatterns = {"/projects"})
 public class ProjectServlet extends HttpServlet {
+    ProjectFacade project = new ProjectFacade();
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+        PrintWriter out = response.getWriter();
+        System.out.println("asddeqeq1");
+        try {
+            String json = project.getProjects(request);
+            out.write(json);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, JsonProcessingException {
-        ProjectFacade project = new ProjectFacade();
         PrintWriter out = response.getWriter();
         try {
             String json = project.createProject(request);
@@ -49,11 +55,25 @@ public class ProjectServlet extends HttpServlet {
         @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
+        try {
+            String json = project.updateProject(request);
+            out.write(json);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
+        try {
+            String json = project.deleteProject(request);
+            out.write(json);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
