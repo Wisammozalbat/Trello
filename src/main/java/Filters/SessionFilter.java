@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Wisam
  */
-@WebFilter(urlPatterns = {"/logout", "/edit", "/friends", "/feed", "/posts", "/files", "/comments", "/likes", "/users", "/notifications",
+@WebFilter(urlPatterns = {"/Login", "/edit", "/friends", "/files", "/comments", "/likes", "/users", "/notifications",
         "/checkFriendRequest"}, filterName = "Session Filter")
 public class SessionFilter implements Filter {
     @Override
@@ -44,6 +44,7 @@ public class SessionFilter implements Filter {
         ObjectMapper objM = new ObjectMapper();
         HttpSession session = req.getSession(false);
         if (session == null) {
+            System.out.println("ffff");
             chain.doFilter(req, resp);
         } else {
             ResponseModel msgToUser = new ResponseModel();

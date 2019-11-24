@@ -16,7 +16,7 @@ import utils.*;
  * @author Wisam
  */
 public class RegisterFacade {
-    private Poolmanager pm = Poolmanager.getSingletonPM();
+    private Poolmanager pm = Poolmanager.getInstance();
     private DBConnection db;
     private PropReader prpReader;
     private JacksonMapper jackson;
@@ -31,7 +31,8 @@ public class RegisterFacade {
             boolean isValid = !db.validate(prpReader.getValue("getUser"), user.getUsername());
             if (isValid) {
                 boolean done = db.update(prpReader.getValue("newUser"), user.getUsername(),
-                    Encrypter.getMD5(user.getPassword()), user.getName(), user.getTypeId());
+                    Encrypter.getMD5(user.getPassword()), user.getName(), 1);
+                System.out.println(done);
                 if(done){
                     resp.setStatus(200);
                     resp.setMessage("Succesfully registrated");
@@ -44,13 +45,13 @@ public class RegisterFacade {
                 resp.setStatus(401);
                 resp.setMessage("Usuario ya registrado");
             }
-            db.closeCon();
         } catch (Exception e) {
             e.printStackTrace();
             resp.setMessage("DB Connection Error");
             resp.setStatus(500);
-            db.closeCon();
         }
+//        db.closeCon();
+        pm.returnConexDisponibles();
         return jackson.plainObjToJson(resp);
     }
 }

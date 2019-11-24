@@ -20,7 +20,7 @@ import utils.*;
  * @author Wisam
  */
 public class ProjectFacade {
-    private Poolmanager pm = Poolmanager.getSingletonPM();
+    private Poolmanager pm = Poolmanager.getInstance();
     private DBConnection db;
     private PropReader prpReader;
     private JacksonMapper jackson;
@@ -28,7 +28,7 @@ public class ProjectFacade {
     
     public String createProject(HttpServletRequest request) throws SQLException, JsonProcessingException, IOException {
         prpReader = PropReader.getInstance();
-        db = new DBConnection();
+        db = pm.getConex();
         jackson = new JacksonMapper();
         ResponseModel resp = new ResponseModel();
         ProjectModel project = jackson.jsonToPlainObj(request, ProjectModel.class);
@@ -52,24 +52,24 @@ public class ProjectFacade {
             resp.setMessage("DB Connection Error: " + e);
             resp.setStatus(500);
         }
-        db.closeCon();
+//        db.closeCon();
+        pm.returnConexDisponibles();
         return jackson.plainObjToJson(resp);
     }
     
     public String getProjects(HttpServletRequest request) throws SQLException, JsonProcessingException {
         ArrayList<ProjectModel> projects = new ArrayList<>();
         prpReader = PropReader.getInstance();
-        db = new DBConnection();
-        ProjectModel project = new ProjectModel();
+        db = pm.getConex();
         jackson = new JacksonMapper();
         ResponseModel resp = new ResponseModel();
-        System.out.println("asdasd");
         System.out.println(request.getSession(false).getAttribute("user_id").toString());
         Integer userId = Integer.parseInt(request.getSession(false).getAttribute("user_id").toString());
 
         try {
             rs = db.execute(prpReader.getValue("getProjects"), userId);
             while (rs.next()) {
+                ProjectModel project = new ProjectModel();
                 System.out.println("trajo algo");
                 UserModel user = new UserModel();
                 project.setData(rs);
@@ -86,14 +86,16 @@ public class ProjectFacade {
         } catch (Exception e) {
             resp.setMessage("DB Connection Error: " + e);
             resp.setStatus(500);
-            db.closeCon();
         }
+//        db.closeCon();
+        pm.returnConexDisponibles();
+//        db.closeCon();
         return jackson.plainObjToJson(resp);
     }
     
     public String updateProject(HttpServletRequest request) throws SQLException, JsonProcessingException, IOException {
         prpReader = PropReader.getInstance();
-        db = new DBConnection();
+        db = pm.getConex();
         jackson = new JacksonMapper();
         ResponseModel resp = new ResponseModel();
         ProjectModel project = jackson.jsonToPlainObj(request, ProjectModel.class);
@@ -106,6 +108,7 @@ public class ProjectFacade {
             if(exists){
                 boolean done = db.update(prpReader.getValue("updateProject"), project.getProjectName(), 
                 project.getProjectDes(), project.getStatus(), project.getProjectId(), userId);
+                            System.out.println(done);
                 if(done){
                     resp.setStatus(200);
                     resp.setMessage("Updated project successfully.");
@@ -125,13 +128,14 @@ public class ProjectFacade {
             resp.setMessage("DB Connection Error: " + e);
             resp.setStatus(500);
         }
-        db.closeCon();
+//        db.closeCon();
+        pm.returnConexDisponibles();
         return jackson.plainObjToJson(resp);
     }
     
     public String deleteProject(HttpServletRequest request) throws SQLException, JsonProcessingException, IOException {
         prpReader = PropReader.getInstance();
-        db = new DBConnection();
+        db = pm.getConex();
         jackson = new JacksonMapper();
         ResponseModel resp = new ResponseModel();
         ProjectModel project = jackson.jsonToPlainObj(request, ProjectModel.class);
@@ -161,7 +165,8 @@ public class ProjectFacade {
             resp.setMessage("DB Connection Error: " + e);
             resp.setStatus(500);
         }
-        db.closeCon();
+//        db.closeCon();
+        pm.returnConexDisponibles();
         return jackson.plainObjToJson(resp);
     }
     

@@ -5,20 +5,31 @@
  */
 package Models;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Wisam
  */
 public class ItemModel {
-    private int itemsId, projectId, status;
-    private String itemsName, itemsDes;
-
-    public int getItemsId() {
-        return itemsId;
+    private int itemId, projectId, status;
+    private String itemName, itemDes;
+    
+    public void setData(ResultSet rs) throws SQLException{
+	this.setItemId(rs.getInt(1));
+        this.setItemName(rs.getString(2));
+        this.setItemDes(rs.getString(3));    
+        this.setStatus(rs.getInt(4));
+        this.setProjectId(rs.getInt(5));
     }
 
-    public void setItemsId(int itemsId) {
-        this.itemsId = itemsId;
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
 
     public int getProjectId() {
@@ -37,21 +48,23 @@ public class ItemModel {
         this.status = status;
     }
 
-    public String getItemsName() {
-        return itemsName;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setItemsName(String itemsName) {
-        this.itemsName = itemsName;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
-    public String getItemsDes() {
-        return itemsDes;
+    public String getItemDes() {
+        return itemDes;
     }
 
-    public void setItemsDes(String itemsDes) {
-        this.itemsDes = itemsDes;
+    public void setItemDes(String itemDes) {
+        this.itemDes = itemDes;
     }
+
+    
 
     
 }

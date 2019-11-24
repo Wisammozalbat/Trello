@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import utils.*;
 
 public class LoginFacade {
-    private Poolmanager pm = Poolmanager.getSingletonPM();
+    private Poolmanager pm = Poolmanager.getInstance();
     private DBConnection db;
     private PropReader prpReader;
     private JacksonMapper jackson;
@@ -48,7 +48,9 @@ public class LoginFacade {
             resp.setMessage("DB Connection Error: " + e);
             resp.setStatus(500);
         }
-        db.closeCon();
+//        db.closeCon();
+        pm.returnConexDisponibles();
+
         return jackson.plainObjToJson(resp);
     }
 }

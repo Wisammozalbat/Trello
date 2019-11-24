@@ -11,7 +11,7 @@ public class Poolmanager {
 
     private static ArrayList<DBConnection> pool = new ArrayList<>();
     private static DBConnection conex = new DBConnection();
-    private Poolmanager pm = new Poolmanager(conex);
+    private static Poolmanager pm = new Poolmanager(conex);
     private static int grow = 5, top = 10, limit = 80;
 
     private Poolmanager(DBConnection conex) {
@@ -65,7 +65,7 @@ public class Poolmanager {
         return ActiveCon;
     }
 
-    public static synchronized void returnConexDisponibles() {
+    public synchronized void returnConexDisponibles() {
         Poolmanager.pool.add(conex);
     }
     
