@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class Poolmanager {
 
     private static ArrayList<DBConnection> pool = new ArrayList<>();
-    private static Poolmanager newPM;
     private static DBConnection conex = new DBConnection();
+    private Poolmanager pm = new Poolmanager(conex);
     private static int grow = 5, top = 10, limit = 80;
 
     private Poolmanager(DBConnection conex) {
@@ -19,13 +19,8 @@ public class Poolmanager {
         Inicializacion(top, grow, limit);
     }
 
-    public static Poolmanager getSingletonPM() {
-        if (newPM == null) {
-            return (newPM = new Poolmanager(conex));
-        } else {
-            System.out.println("Este objeto ya se ha instanciado.");
-            return null;
-        }
+    public static Poolmanager getInstance() {
+        return pm;
     }
 
     private void Inicializacion(int maximo, int aumento, int limite) {
