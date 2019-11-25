@@ -5,6 +5,9 @@
  */
 package Models;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Wisam
@@ -12,6 +15,12 @@ package Models;
 public class ContentModel {
     private int contentId, itemId;
     private String contentDes;
+    
+    public void setData(ResultSet rs) throws SQLException{
+	this.setContentId(rs.getInt(1));
+        this.setItemId(rs.getInt(2));
+        this.setContentDes(rs.getString(3));
+    }
 
     public int getContentId() {
         return contentId;

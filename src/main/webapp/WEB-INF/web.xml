@@ -17,10 +17,6 @@
         <servlet-class>Servlets.ContentServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DelegateServlet</servlet-name>
-        <servlet-class>Servlets.DelegateServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ItemServlet</servlet-name>
         <servlet-class>Servlets.ItemServlet</servlet-class>
     </servlet>
@@ -43,10 +39,6 @@
     <servlet-mapping>
         <servlet-name>ContentServlet</servlet-name>
         <url-pattern>/content</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DelegateServlet</servlet-name>
-        <url-pattern>/delegate</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ItemServlet</servlet-name>

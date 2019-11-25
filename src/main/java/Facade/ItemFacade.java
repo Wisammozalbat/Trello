@@ -119,7 +119,6 @@ public class ItemFacade {
             resp.setMessage("DB Connection Error: " + e);
             resp.setStatus(500);
         }
-//        db.closeCon();
         pm.returnConexDisponibles();
         return jackson.plainObjToJson(resp);
     }
