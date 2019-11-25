@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Wisam
  */
-@WebServlet(name = "ProjectServlet", urlPatterns = {"/projects"})
-public class ProjectServlet extends HttpServlet {
+
+public class Project extends HttpServlet {
     ProjectFacade project = new ProjectFacade();
     
     @Override
@@ -35,7 +35,7 @@ public class ProjectServlet extends HttpServlet {
             String json = project.getProjects(request);
             out.write(json);
         } catch (SQLException ex) {
-            Logger.getLogger(ProjectServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -48,7 +48,7 @@ public class ProjectServlet extends HttpServlet {
             String json = project.createProject(request);
             out.write(json);
         } catch (SQLException ex) {
-            Logger.getLogger(ProjectServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -60,7 +60,7 @@ public class ProjectServlet extends HttpServlet {
             String json = project.updateProject(request);
             out.write(json);
         } catch (SQLException ex) {
-            Logger.getLogger(ProjectServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -72,7 +72,7 @@ public class ProjectServlet extends HttpServlet {
             String json = project.deleteProject(request);
             out.write(json);
         } catch (SQLException ex) {
-            Logger.getLogger(ProjectServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Project.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

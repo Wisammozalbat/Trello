@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Wisam
  */
-public class ItemServlet extends HttpServlet {
+public class Item extends HttpServlet {
     ItemFacade item = new ItemFacade();
 
     @Override
@@ -32,7 +32,7 @@ public class ItemServlet extends HttpServlet {
             String json = item.getItems(request);
             out.write(json);
         } catch (SQLException ex) {
-            Logger.getLogger(ItemServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Item.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -45,7 +45,7 @@ public class ItemServlet extends HttpServlet {
             String json = item.createItem(request);
             out.write(json);
         } catch (SQLException ex) {
-            Logger.getLogger(ItemServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Item.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -57,7 +57,7 @@ public class ItemServlet extends HttpServlet {
             String json = item.updateItem(request);
             out.write(json);
         } catch (SQLException ex) {
-            Logger.getLogger(ItemServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Item.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -70,7 +70,7 @@ public class ItemServlet extends HttpServlet {
             String json = item.deleteItem(request);
             out.write(json);
         } catch (SQLException ex) {
-            Logger.getLogger(ItemServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Item.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Project Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="./../css/materialize.min.css"
+      media="screen,projection"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="black">
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <nav class="black container">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">List Project</a>
+        <form class="left hide-on-med-and-down" style="width:40%">
+          <div class="input-field">
+            <input id="search" placeholder="Search..." type="search" required />
+            <label class="label-icon" for="search"
+              ><i class="material-icons">search</i></label
+            >
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+        <ul class="right hide-on-med-and-down">
+          <li>
+            <a href="./../index.html"
+              ><i class="material-icons right">close</i>Log out</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="white container" style="padding: 20px;">
+      <h3 id="text-result" style="text-align: center">Busqueda relacionada</h3>
+      <br />
+      <ul class="collapsible" id="result">
+        <!--
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons">whatshot</i>Third</div>
+                            <div class="collapsible-body">
+                                <span>Lorem ipsum dolor sit amet.</span>
+                                <br>
+                                <br>
+                                <br>
+                                <div>
+                                    <a class="secondary-content waves-effect waves-light btn-floating btn-large black"><i class="material-icons white-text">play_arrow</i></a>
+                                </div>
+                            </div>
+                        </li>
+                        -->
+      </ul>
+    </div>
+    <script src="./../js/search.js"></script>
+    <script>
+      window.onload = function() {
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var id = url.searchParams.get("s");
+        if (id === null || undefined) {
+          location.href = "dashboard.html";
+        } else {
+          requestData(id);
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", function() {
+        var elems = document.querySelectorAll(".collapsible");
+        var instances = M.Collapsible.init(elems);
+      });
+
+      document.addEventListener("DOMContentLoaded", function() {
+        var elems = document.querySelectorAll(".dropdown-trigger");
+        var instances = M.Dropdown.init(elems);
+      });
+
+      document.addEventListener("DOMContentLoaded", function() {
+        var elems = document.querySelectorAll(".modal");
+        var instances = M.Modal.init(elems);
+      });
+
+      document.addEventListener("DOMContentLoaded", function() {
+        var elems = document.querySelectorAll("select");
+        var instances = M.FormSelect.init(elems);
+      });
+    </script>
+  </body>
+</html>

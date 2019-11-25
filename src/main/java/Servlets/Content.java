@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Wisam
  */
-public class ContentServlet extends HttpServlet {
+public class Content extends HttpServlet {
     ContentFacade content = new ContentFacade();
 
     @Override
@@ -30,7 +30,7 @@ public class ContentServlet extends HttpServlet {
             String json = content.getContents(request);
             out.write(json);
         } catch (SQLException ex) {
-            Logger.getLogger(ContentServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Content.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -43,7 +43,7 @@ public class ContentServlet extends HttpServlet {
             String json = content.createContent(request);
             out.write(json);
         } catch (SQLException ex) {
-            Logger.getLogger(ContentServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Content.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -55,7 +55,7 @@ public class ContentServlet extends HttpServlet {
             String json = content.updateContent(request);
             out.write(json);
         } catch (SQLException ex) {
-            Logger.getLogger(ContentServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Content.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -67,7 +67,7 @@ public class ContentServlet extends HttpServlet {
             String json = content.deleteContent(request);
             out.write(json);
         } catch (SQLException ex) {
-            Logger.getLogger(ContentServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Content.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

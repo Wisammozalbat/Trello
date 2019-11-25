@@ -26,8 +26,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Wisam
  */
-@WebFilter(urlPatterns = {"/Login", "/edit", "/friends", "/files", "/comments", "/likes", "/users", "/notifications",
-        "/checkFriendRequest"}, filterName = "Session Filter")
+@WebFilter(urlPatterns = {"/login", "/register"}, filterName = "Session Filter")
 public class SessionFilter implements Filter {
     @Override
     public void destroy() {}
