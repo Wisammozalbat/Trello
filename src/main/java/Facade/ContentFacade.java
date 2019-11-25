@@ -157,4 +157,5 @@ public class ContentFacade {
 //        db.closeCon();
         pm.returnConexDisponibles();
         return jackson.plainObjToJson(resp);
+    }
 }
