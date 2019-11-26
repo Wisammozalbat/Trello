@@ -1,0 +1,95 @@
+#username {
+  color: black;
+  display: block;
+  margin: 20px auto;
+  border-radius: 5px;
+  background-color: rgb(206, 236, 255);
+}
+
+#name {
+  color: black;
+  display: block;
+  margin: 20px auto;
+  border-radius: 5px;
+  background-color: rgb(206, 236, 255);
+}
+
+#password {
+  color: black;
+  display: block;
+  margin: 20px auto;
+  border-radius: 5px;
+  background-color: rgb(206, 236, 255);
+}
+
+.btn {
+  border-radius: 5px;
+}
+
+.mySubmitBtn {
+  width: 50%;
+}
+
+.register_container {
+  margin: 0 auto;
+  width: 80%;
+}
+
+#container {
+  margin: 40px auto;
+  padding: 30px;
+  width: 50%;
+  border-radius: 5px;
+  background-color: #64b5f6;
+  overflow: auto;
+}
+
+#username:hover {
+  text-shadow: 0 0 1px black;
+  background-color: #bfddfc;
+}
+
+#password:hover {
+  text-shadow: 0 0 1px black;
+  background-color: #bfddfc;
+}
+
+#name:hover {
+  text-shadow: 0 0 1px black;
+  background-color: #bfddfc;
+}
+
+#register {
+  background-color: gray;
+  margin: 0 auto;
+  display: block;
+}
+
+#register:hover {
+  background: #852525;
+}
+
+#login {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+
+#loginLink:hover {
+  cursor: default;
+  color: #2b20be;
+}
+
+#title {
+  letter-spacing: 2px;
+  font-weight: 500;
+  margin-top: 0px;
+}
+
+body {
+  background: linear-gradient(
+    90deg,
+    rgba(9, 9, 121, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}

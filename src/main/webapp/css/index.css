@@ -1,0 +1,64 @@
+#indexContainer {
+  background-color: #90c2fc;
+  max-width: 50%;
+  margin-top: 5%;
+  border-radius: 5px;
+  padding-bottom: 40px;
+  padding-top: 5px;
+}
+
+#title {
+  letter-spacing: 2px;
+  font-weight: 650;
+}
+
+#subtitle {
+  letter-spacing: 2px;
+  font-size: 30px;
+}
+
+#LoginButton {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  border: 1px solid black;
+  background-color: #e9f4ff;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 40px;
+}
+
+#LoginButton:hover {
+  text-shadow: 0 0 1px black;
+  background-color: #bfddfc;
+}
+
+#RegisterButton:hover {
+  text-shadow: 0 0 1px black;
+  background-color: #bfddfc;
+}
+
+#RegisterButton {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  border: 1px solid black;
+  background-color: #e9f4ff;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+body {
+  background: linear-gradient(
+    90deg,
+    rgba(9, 9, 121, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}

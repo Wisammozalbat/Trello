@@ -2,28 +2,35 @@ function $(id) {
   return document.getElementById(id);
 }
 
-function login() {
-  let body = {
-      username: $("uname").value,
-      password: $("pword").value
-    },
-    params = {
-      method: "POST",
-      headers: new Headers({ "Content-Type": "application/json" }),
-      body: JSON.stringify(body)
-    };
-  fetch("./../login", params)
-    .then(resp => resp.json())
-    .then(data => {
-      console.log(data);
-      if (data.status == 200) {
-        sessionStorage.setItem("token", data.token);
-        sessionStorage.setItem("user", JSON.stringify(data.user));
-        location.href = "dashboard.html";
-      } else {
-        alert("Usuario o contraseña erronea, status:" + data.status);
+let login = () => {
+  body = {
+    username: $("username").value,
+    password: $("password").value
+  };
+  console.log(body);
+  fetch("./../login", {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: new Headers({ "Content-Type": "application/json" })
+  })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      let newData = {
+        id: res.data.id,
+        username: res.data.username
+      };
+      localStorage.setItem("data", JSON.stringify(newData));
+      if (res.status == 200) {
+        localStorage.setItem("data", JSON.stringify(newData));
+        console.log(localStorage);
+        window.location = "../views/dashboard.html";
       }
     });
-}
+};
 
-$("logbtn").addEventListener("click", login);
+$("login").addEventListener("click", login);
+
+$("registerLink").addEventListener("click", () => {
+  window.location = "../views/register.html";
+});

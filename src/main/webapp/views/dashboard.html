@@ -1,103 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Project Manager</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="./../css/materialize.min.css"
-      media="screen,projection"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./../css/materialize.min.css" />
+    <link rel="stylesheet" href="./../css/dashboard.css" />
+    <title>Dashboard</title>
   </head>
-
-  <body class="black white-text">
-    <script type="text/javascript" src="./../js/materialize.min.js"></script>
-
-    <nav class="black container">
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo center">List Project</a>
-          <div class="input-field">
-            <input id="search" placeholder="Search..." type="search" required />
-            <label class="label-icon" for="search"
-              ><i class="material-icons">search</i></label
-            >
-            <i class="material-icons">close</i>
-          </div>
-        </form>
-        <ul class="right hide-on-med-and-down">
+  <body>
+    <nav>
+      <div class="nav-wrapper blue lighten-2">
+        <a href="#" class="brand-logo center" id="title">MY TRELLO</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li>
-            <a onclick="logout()"
-              ><i class="material-icons right">close</i>Log out</a
-            >
+            <a class="navBar" id="logout">Logout</a>
           </li>
         </ul>
       </div>
     </nav>
-    <div id="row" class="row container"></div>
-    <div class="center">
-      <a
-        href="#modal1"
-        class="modal-trigger waves-effect waves-light btn-large white black-text"
-        id="btn-new"
-        >New Project</a
-      >
+    <div id="content" class="content">
+      <h1 class="center" id="projectTitle">My Projects</h1>
+      <div class="content" id="projectsContent"></div>
     </div>
-
-    <!--Modals-->
-    <div id="modal1" class="modal black-text">
-      <div class="modal-content">
-        <h4 class="center">Create your project!</h4>
-        <div class="row">
-          <form>
-            <div class="input-field col s12">
-              <i class="material-icons prefix">account_circle</i>
-              <input
-                placeholder="Name Project"
-                id="name_project"
-                type="text"
-                class="validate black-text"
-              />
-            </div>
-            <div class="input-field col s12">
-              <i class="material-icons prefix">insert_emoticon</i>
-              <textarea
-                placeholder="Project Description"
-                id="des_project"
-                class="materialize-textarea"
-              ></textarea>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <a
-          id="modalbtn"
-          href="#!"
-          class="modal-close waves-effect waves-green btn-flat black white-text"
-          >Crear</a
-        >
-      </div>
-    </div>
-
+    <script src="./../js/logout.js"></script>
     <script src="./../js/dashboard.js"></script>
-    <script src="./../js/search.js"></script>
-
-    <script>
-      if (JSON.parse(sessionStorage.getItem("user")).type === 2) {
-        $("inputSearch").hidden = true;
-      }
-
-      document.addEventListener("DOMContentLoaded", function() {
-        var elems = document.querySelectorAll(".modal");
-        var instances = M.Modal.init(elems);
-      });
-    </script>
   </body>
 </html>
