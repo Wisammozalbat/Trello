@@ -5,7 +5,7 @@
  */
 package Filters;
 
-import Models.*;
+import Models.ResponseModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -26,8 +26,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author Wisam
  */
-@WebFilter(urlPatterns = {"/login", "/register"}, filterName = "Session Filter")
-public class SessionFilter implements Filter {
+@WebFilter(urlPatterns = {"/items", "/projects", "/content", "/logout"}, filterName = "NoSession Filter")
+public class NoSession implements Filter {
+    
     @Override
     public void destroy() {}
 
@@ -43,18 +44,15 @@ public class SessionFilter implements Filter {
         ObjectMapper objM = new ObjectMapper();
         HttpSession session = req.getSession(false);
         if (session == null) {
-            System.out.println("loged in");
-            chain.doFilter(req, resp);
-        } else {
-            ResponseModel<UserModel> msgToUser = new ResponseModel();
-            UserModel usr = new UserModel();
-            usr.setId((int)session.getAttribute("user_id"));
-            usr.setUsername(session.getAttribute("user").toString());
-            msgToUser.setData(usr);
-            msgToUser.setMessage("Already logged in");
+            ResponseModel msgToUser = new ResponseModel();
+            msgToUser.setMessage("No se tiene sesion");
             msgToUser.setStatus(403);
             json = objM.writeValueAsString(msgToUser);
             out.print(json);
+        } else {
+            System.out.println("loged out");
+            chain.doFilter(req, resp);
         }
     }
+    
 }
