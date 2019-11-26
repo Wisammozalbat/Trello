@@ -13,14 +13,13 @@ import java.sql.SQLException;
  */
 public class UserModel {
     private String name, password, username;
-    private int typeId, id;
+    private int id;
 
     public void setData(ResultSet rs) throws SQLException{
 	this.setId(rs.getInt(1));
         this.setUsername(rs.getString(2));
         this.setPassword(null);    
         this.setName(rs.getString(4));
-        this.setTypeId(rs.getInt(5));
     }
     
     public String getName() {
@@ -45,14 +44,6 @@ public class UserModel {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public int getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(int typeId) {
-        this.typeId = typeId;
     }
 
     public int getId() {

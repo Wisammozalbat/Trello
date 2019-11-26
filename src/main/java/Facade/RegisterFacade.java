@@ -31,7 +31,7 @@ public class RegisterFacade {
             boolean isValid = !db.validate(prpReader.getValue("getUser"), user.getUsername());
             if (isValid) {
                 boolean done = db.update(prpReader.getValue("newUser"), user.getUsername(),
-                    Encrypter.getMD5(user.getPassword()), user.getName(), 1);
+                    Encrypter.getMD5(user.getPassword()), user.getName());
                 System.out.println(done);
                 if(done){
                     resp.setStatus(200);

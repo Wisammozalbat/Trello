@@ -73,9 +73,8 @@ public class ProjectFacade {
                 System.out.println("trajo algo");
                 UserModel user = new UserModel();
                 project.setData(rs);
-                user.setUsername(rs.getString(6));
-                user.setName(rs.getString(7));
-                user.setTypeId(rs.getInt(8));
+                user.setName(rs.getString(6));
+                user.setUsername(rs.getString(7));
                 user.setId(rs.getInt(2));
                 project.setUser(user);
                 projects.add(project);

@@ -20,8 +20,8 @@ public class ProjectModel {
     public void setData(ResultSet rs) throws SQLException{
 	this.setProjectId(rs.getInt(1));
         this.setUserId(rs.getInt(2));
-        this.setProjectDes(rs.getString(3));    
-        this.setProjectName(rs.getString(4));
+        this.setProjectName(rs.getString(3));    
+        this.setProjectDes(rs.getString(4));
         this.setStatus(rs.getInt(5));
     }
     
