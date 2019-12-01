@@ -75,6 +75,10 @@
   margin-bottom: 0px;
 }
 
+#loginLink {
+  color: white;
+}
+
 #loginLink:hover {
   cursor: default;
   color: #2b20be;
@@ -92,4 +96,22 @@ body {
     rgba(9, 9, 121, 1) 0%,
     rgba(0, 212, 255, 1) 100%
   );
+}
+
+#username,
+#password,
+#name {
+  background: transparent;
+}
+
+#register {
+  background: #8a9fbf;
+}
+
+#loginLink {
+  color: #30348e;
+}
+
+label {
+  color: #000000;
 }

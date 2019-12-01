@@ -1,0 +1,31 @@
+#logo {
+  margin-left: 20px;
+}
+
+body {
+  background: linear-gradient(80deg, #30348e, #7b80ce);
+  font-family: Lucida Sans;
+  max-height: 100%;
+}
+
+#navBar {
+  background-color: #2f2c24;
+}
+
+#formContainer {
+  margin: 40px auto;
+  padding: 30px;
+  width: 50%;
+  border-radius: 5px;
+  overflow: auto;
+  background-color: #f0efec;
+}
+
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+html {
+  height: 100%;
+}

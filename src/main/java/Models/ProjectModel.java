@@ -7,6 +7,7 @@ package Models;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,6 +17,7 @@ public class ProjectModel {
     private int projectId, status, userId;
     private String projectName, projectDes;
     private UserModel user;
+    private ArrayList<ItemModel> items;
     
     public void setData(ResultSet rs) throws SQLException{
 	this.setProjectId(rs.getInt(1));
@@ -23,6 +25,14 @@ public class ProjectModel {
         this.setProjectName(rs.getString(3));    
         this.setProjectDes(rs.getString(4));
         this.setStatus(rs.getInt(5));
+    }
+    
+    public ArrayList<ItemModel> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<ItemModel> items) {
+        this.items = items;
     }
     
     public UserModel getUser() {

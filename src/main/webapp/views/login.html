@@ -8,25 +8,22 @@
 
     <link rel="stylesheet" href="./../css/materialize.min.css" />
     <link rel="stylesheet" href="./../css/login.css" />
+    <link rel="stylesheet" href="./../css/global.css" />
 
     <script src="../js/materialize.min.js"></script>
   </head>
   <body>
-    <div class="center-align container" id="container">
+    <div class="center-align container" id="formContainer">
       <h2 id="title">LOGIN</h2>
       <div class="login_container">
-        <input
-          class="myBtn center-align btn"
-          placeholder="Username"
-          type="text"
-          id="username"
-        />
-        <input
-          class="myBtn center-align btn"
-          placeholder="Password"
-          type="password"
-          id="password"
-        />
+        <div class="input-field col s6">
+          <label for="username">Username</label>
+          <input class="validate" type="text" id="username" />
+        </div>
+        <div class="input-field col s6">
+          <label for="password">Password</label>
+          <input class="validate" type="password" id="password" />
+        </div>
         <a
           class="waves-effect waves-light mySubmitBtn btn center-align"
           id="login"

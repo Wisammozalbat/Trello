@@ -25,6 +25,8 @@ public class ProjectFacade {
     private PropReader prpReader;
     private JacksonMapper jackson;
     private ResultSet rs;
+    private ResultSet rs2;
+
     
     public String createProject(HttpServletRequest request) throws SQLException, JsonProcessingException, IOException {
         prpReader = PropReader.getInstance();
@@ -69,6 +71,7 @@ public class ProjectFacade {
         try {
             rs = db.execute(prpReader.getValue("getProjects"), userId);
             while (rs.next()) {
+                ArrayList<ItemModel> items = new ArrayList<>();
                 ProjectModel project = new ProjectModel();
                 System.out.println("trajo algo");
                 UserModel user = new UserModel();
@@ -76,9 +79,21 @@ public class ProjectFacade {
                 user.setName(rs.getString(6));
                 user.setUsername(rs.getString(7));
                 user.setId(rs.getInt(2));
+                rs2 = db.execute(prpReader.getValue("getItems"), project.getProjectId());
+                while(rs2.next()){
+                    ItemModel item = new ItemModel();
+                    item.setItemId(rs2.getInt(1));
+                    item.setItemName(rs2.getString(2));
+                    item.setItemDes(rs2.getString(3));    
+                    item.setStatus(rs2.getInt(4));
+                    item.setProjectId(rs2.getInt(5));
+                    items.add(item);
+                }
+                project.setItems(items);
                 project.setUser(user);
                 projects.add(project);
             }
+            System.out.println("todo bien hasta aca");
             resp.setData(projects);
             resp.setMessage("Projects Returned");
             resp.setStatus(200);

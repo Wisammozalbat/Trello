@@ -2,23 +2,69 @@
   font-size: 30px;
 }
 
-#title {
-  margin-top: 5px;
-  margin-bottom: 5px;
-
-  font-size: 60px;
+.flex {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #projectsContent {
   margin: 40px;
   color: red;
   padding: 30px;
+  display: flex;
 }
 
-body {
-  background: linear-gradient(
-    90deg,
-    rgba(9, 9, 121, 1) 0%,
-    rgba(0, 212, 255, 1) 100%
-  );
+#projectTitle {
+  font-size: 30px;
+  color: #f0efec;
+}
+
+.projectHeader {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.projectDes {
+  position: absolute;
+  bottom: 0;
+}
+
+.projectFooter {
+  position: absolute;
+  bottom: 0;
+}
+
+.projectContainer {
+  position: relative;
+  width: 28%;
+  font-size: 20px;
+  display: inline-block;
+  margin: 30px;
+  color: black;
+  border-radius: 5px;
+  background-color: #bf3030;
+}
+
+.projectName {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.projectProgress {
+  text-align: right;
+}
+
+.p {
+  display: inline-block;
+  max-width: 66.66%;
+  vertical-align: top;
+}
+
+#mdCard {
+  background-color: #f0efec;
+}
+
+#mdLink {
+  color: #ffffff;
+  background-color: #8a9fbf;
 }

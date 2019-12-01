@@ -66,15 +66,22 @@ public class ItemFacade {
         Integer projectId = Integer.parseInt(request.getParameter("projectId"));
         System.out.println(projectId);
         try {
+            ProjectModel project = new ProjectModel();
             rs = db.execute(prpReader.getValue("getItems"), projectId);
             while (rs.next()) {
                 ItemModel item = new ItemModel();        
-                System.out.println("trajo algo " +rs.getInt(1) );
+                System.out.println("trajo algo " + rs.getInt(1) );
                 item.setData(rs);
                 items.add(item);
+                project.setProjectId(rs.getInt(5));
+                project.setProjectName(rs.getString(6));
+                project.setStatus(rs.getInt(7));
+                project.setProjectDes(rs.getString(8));
+                project.setUserId(rs.getInt(9));
             }
-            resp.setData(items);
-            resp.setMessage("Items Returned");
+            project.setItems(items);
+            resp.setData(project);
+            resp.setMessage("Project data Returned");
             resp.setStatus(200);
         } catch (Exception e) {
             resp.setMessage("DB Connection Error: " + e);

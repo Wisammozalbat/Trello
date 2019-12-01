@@ -67,6 +67,10 @@
   color: #2b20be;
 }
 
+#registerLink {
+  color: #30348e;
+}
+
 #title {
   letter-spacing: 2px;
   font-weight: 500;
@@ -79,4 +83,14 @@ body {
     rgba(9, 9, 121, 1) 0%,
     rgba(0, 212, 255, 1) 100%
   );
+}
+
+#login {
+  background-color: #8a9fbf;
+}
+
+#username,
+#password {
+  background: transparent;
+  color: #000000;
 }

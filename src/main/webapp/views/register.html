@@ -8,26 +8,26 @@
 
     <link rel="stylesheet" href="./../css/materialize.min.css" />
     <link rel="stylesheet" href="./../css/register.css" />
+    <link rel="stylesheet" href="./../css/global.css" />
 
     <script src="../js/materialize.min.js"></script>
   </head>
   <body>
-    <div class="center-align container" id="container">
+    <div class="center-align container" id="formContainer">
       <h2 id="title">REGISTER</h2>
       <div class="register_container">
-        <input
-          class="myBtn btn"
-          placeholder="Username"
-          type="text"
-          id="username"
-        />
-        <input
-          class="myBtn btn"
-          placeholder="Password"
-          type="password"
-          id="password"
-        />
-        <input class="myBtn btn" placeholder="Name" type="text" id="name" />
+        <div class="input-field col s6">
+          <label for="username">Username</label>
+          <input class="myBtn btn" type="text" id="username" />
+        </div>
+        <div class="input-field col s6">
+          <label for="password">Password</label>
+          <input class="myBtn btn" type="password" id="password" />
+        </div>
+        <div class="input-field col s6">
+          <label for="name">Name</label>
+          <input class="myBtn btn" type="text" id="name" />
+        </div>
         <a
           class="waves-effect waves-light mySubmitBtn btn center-align"
           id="register"
