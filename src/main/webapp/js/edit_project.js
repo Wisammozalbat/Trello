@@ -35,6 +35,9 @@ let deleteData = () => {
 };
 
 let editProject = () => {
+  if (localStorage.length < 1) {
+    window.location = "./../index.html";
+  }
   let user = JSON.parse(localStorage.getItem("data"));
   fetch(`./../projects?projectId=${x}`, {
     method: "PUT",

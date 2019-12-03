@@ -125,11 +125,11 @@ window.onpageshow = async () => {
               </div>
               <div class="card-action  row">
                 <div class="col l8 offset-l2 col s12 valign-wrapper">
-                  <a class="col s7 waves-effect waves-light btn-flat" style="color: #2f2c24" onClick="showDetails(${i.projectId})"
+                  <a class="col s5 waves-effect waves-light btn-flat" style="color: #2f2c24" onClick="showDetails(${i.projectId})"
                     >Ver mas</a
                   >
-                  <button onClick="setData('${i.projectName}','${i.projectDes}',${i.status}, ${i.projectId})" class="col s2 waves-effect waves-light btn modal-trigger" data-target="idModal" href="#idModal" id="edit"><i class="large material-icons">edit</i></button>
-                  <button onClick="deleteProject(${i.projectId})" class="col s2 waves-effect waves-light offset-s1 btn" id="delete"><i class="large material-icons">delete</i></button>
+                  <button onClick="setData('${i.projectName}','${i.projectDes}',${i.status}, ${i.projectId})" class="col s3 waves-effect waves-light btn modal-trigger" data-target="idModal" href="#idModal" id="edit"><i class="large material-icons">edit</i></button>
+                  <button onClick="deleteProject(${i.projectId})" class="col s3 waves-effect waves-light offset-s1 btn" id="delete"><i class="large material-icons">delete</i></button>
                 </div>
               </div>
             </div>

@@ -20,9 +20,7 @@
         <a href="#" class="brand-logo" id="logo">MY TRELLO</a>
         <ul id="nav-mobile" class="right">
           <li>
-            <a href="./../views/new_project.html" id="newProject"
-              >New project</a
-            >
+            <a href="./../new_project.html" id="newProject">New project</a>
           </li>
           <li>
             <a href="./../index.html" id="logout">Logout</a>
@@ -46,24 +44,27 @@
             <div class="card-content white-text" style="background: #f0efec">
               <div class="row">
                 <div class="input-field sol s6">
-                  <input type="text" name="pName" id="pName" value="" />
+                  <input
+                    type="text"
+                    name="pName"
+                    id="pName"
+                    placeholder="Your project's name"
+                    value=""
+                  />
                 </div>
               </div>
               <div class="row">
                 <div class="input-field sol s6">
-                  <input type="text" name="pDesc" id="pDesc" value="" />
+                  <input
+                    type="text"
+                    name="pDesc"
+                    id="pDesc"
+                    placeholder="Your project's description"
+                    value=""
+                  />
                 </div>
               </div>
-              <div class="row">
-                <label>Status</label>
-                <select class="browser-default" name="status" id="pStatus">
-                  <option value="" disabled selected id="dStatus"></option>
-                  <option value="1">Pendiente</option>
-                  <option value="2">En progreso</option>
-                  <option value="3">Culminado</option>
-                </select>
-              </div>
-              <div class="card-action" id="submit" align="center"></div>
+              <div class="card-action center" id="submit"></div>
             </div>
           </div>
         </div>
@@ -71,7 +72,6 @@
     </div>
 
     <script src="./../js/logout.js"></script>
-    <script src="./../js/edit_project.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./../js/new_project.js"></script>
   </body>
 </html>

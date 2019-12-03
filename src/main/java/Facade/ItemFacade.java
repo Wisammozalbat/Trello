@@ -35,10 +35,11 @@ public class ItemFacade {
         jackson = new JacksonMapper();
         ResponseModel resp = new ResponseModel();
         ItemModel item = jackson.jsonToPlainObj(request, ItemModel.class);
+        Integer projectId = Integer.parseInt(request.getParameter("projectId"));
         
         try {
             boolean done = db.update(prpReader.getValue("newItem"), item.getItemName(), item.getItemDes(),
-                    item.getStatus(), item.getProjectId());
+                    1, projectId);
             if(done){
                 resp.setStatus(201);
                 resp.setMessage("Created item successfully.");

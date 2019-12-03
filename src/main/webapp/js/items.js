@@ -54,6 +54,12 @@ let getStatus = itemStatus => {
 };
 
 window.onpageshow = () => {
+  if (localStorage.length < 1) {
+    window.location = "./../index.html";
+  }
+  $("newItem").addEventListener("click", () => {
+    window.location = `../views/new_item.html?${x}`;
+  });
   fetch(`./../items?projectId=${x}`, {
     method: "GET",
     headers: new Headers({
