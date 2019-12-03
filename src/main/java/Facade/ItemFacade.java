@@ -27,6 +27,7 @@ public class ItemFacade {
     private PropReader prpReader;
     private JacksonMapper jackson;
     private ResultSet rs;
+    private ResultSet rs2;
     
     public String createItem(HttpServletRequest request) throws SQLException, JsonProcessingException, IOException {
         prpReader = PropReader.getInstance();
@@ -79,7 +80,17 @@ public class ItemFacade {
                 project.setProjectDes(rs.getString(8));
                 project.setUserId(rs.getInt(9));
             }
-            project.setItems(items);
+            if(items.size() >= 1){
+                System.out.println("hay items");
+                project.setItems(items);
+            }
+            else {
+                System.out.println("no hay items");
+                rs2 = db.execute(prpReader.getValue("getProjectById"), projectId);
+                while (rs2.next()){
+                    project.setData(rs2);
+                }
+            }
             resp.setData(project);
             resp.setMessage("Project data Returned");
             resp.setStatus(200);
@@ -135,14 +146,15 @@ public class ItemFacade {
         db = pm.getConex();
         jackson = new JacksonMapper();
         ResponseModel resp = new ResponseModel();
-        ItemModel item = jackson.jsonToPlainObj(request, ItemModel.class);
-        Integer projectId = Integer.parseInt(request.getParameter("projectId"));
+        Integer projectId = Integer.parseInt(request.getParameter("projectId"));        
+        Integer itemId = Integer.parseInt(request.getParameter("itemId"));
+
         
         try {
-            boolean exists = db.validate(prpReader.getValue("getItem"), item.getItemId(), projectId);
+            boolean exists = db.validate(prpReader.getValue("getItem"), itemId, projectId);
             if(exists){
                 System.out.println("asdweqq");
-                boolean done = db.update(prpReader.getValue("deleteItem"), item.getItemId(), projectId);
+                boolean done = db.update(prpReader.getValue("deleteItem"), itemId, projectId);
                 System.out.println(done);
                 if(done){
                     System.out.println("se");

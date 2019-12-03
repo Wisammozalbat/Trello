@@ -92,6 +92,7 @@ public class ProjectFacade {
                 project.setItems(items);
                 project.setUser(user);
                 projects.add(project);
+                System.out.println("");
             }
             System.out.println("todo bien hasta aca");
             resp.setData(projects);
@@ -113,15 +114,16 @@ public class ProjectFacade {
         jackson = new JacksonMapper();
         ResponseModel resp = new ResponseModel();
         ProjectModel project = jackson.jsonToPlainObj(request, ProjectModel.class);
+        Integer projectId = Integer.parseInt(request.getParameter("projectId"));
 
         
         Integer userId = Integer.parseInt(request.getSession(false).getAttribute("user_id").toString());
 
         try {
-            boolean exists = db.validate(prpReader.getValue("getProject"), project.getProjectId(), userId);
+            boolean exists = db.validate(prpReader.getValue("getProject"), projectId, userId);
             if(exists){
                 boolean done = db.update(prpReader.getValue("updateProject"), project.getProjectName(), 
-                project.getProjectDes(), project.getStatus(), project.getProjectId(), userId);
+                project.getProjectDes(), project.getStatus(), projectId, userId);
                             System.out.println(done);
                 if(done){
                     resp.setStatus(200);
@@ -152,14 +154,14 @@ public class ProjectFacade {
         db = pm.getConex();
         jackson = new JacksonMapper();
         ResponseModel resp = new ResponseModel();
-        ProjectModel project = jackson.jsonToPlainObj(request, ProjectModel.class);
+        Integer projectId = Integer.parseInt(request.getParameter("projectId"));
         
         Integer userId = Integer.parseInt(request.getSession(false).getAttribute("user_id").toString());
 
         try {
-            boolean exists = db.validate(prpReader.getValue("getProject"), project.getProjectId(), userId);
+            boolean exists = db.validate(prpReader.getValue("getProject"), projectId, userId);
             if(exists){
-                boolean done = db.update(prpReader.getValue("deleteProject"), project.getProjectId(), userId);
+                boolean done = db.update(prpReader.getValue("deleteProject"), projectId, userId);
                 if(done){
                     resp.setStatus(200);
                     resp.setMessage("Deleted project successfully.");

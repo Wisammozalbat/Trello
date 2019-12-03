@@ -68,3 +68,16 @@
   color: #ffffff;
   background-color: #8a9fbf;
 }
+
+div.card-action {
+  margin-bottom: 0px;
+  padding-bottom: 0px !important;
+}
+
+button.btn {
+  background-color: #8a9fbf;
+}
+
+#delete {
+  background-color: red;
+}

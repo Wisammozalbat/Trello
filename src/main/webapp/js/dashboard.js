@@ -19,10 +19,46 @@ let showDetails = id_project => {
   window.location = `../views/items.html?${id_project}`;
 };
 
+let redirect = pId => {
+  window.location = `../views/edit_project.html?${pId}`;
+};
+
+let setData = (pName, pDesc, pStatus, pId) => {
+  localStorage.setItem("projectName", pName);
+  localStorage.setItem("projectDesc", pDesc);
+  localStorage.setItem("projectStat", pStatus);
+  redirect(pId);
+};
+
+let deleteData = () => {
+  localStorage.removeItem("projectName");
+  localStorage.removeItem("projectDesc");
+  localStorage.removeItem("projectStat");
+};
+
+let deleteProject = projectId => {
+  let opc = prompt("Esta seguro que desea borrar el proyecto? 1=Si 2=NO");
+  if (opc == 1) {
+    fetch(`./../projects?projectId=${projectId}`, {
+      method: "DELETE",
+      headers: new Headers({
+        "Content-Type": "application/x-www-form-urlencoded"
+      })
+    })
+      .then(res => res.json())
+      .then(res => {
+        deleteData();
+        window.location = `../views/dashboard.html`;
+      });
+    console.log("se borro el projecto " + projectId);
+  } else if (opc == 2) {
+  }
+};
+
 window.onpageshow = async () => {
-  // if (localStorage.length < 1) {
-  //   window.location = "./../index.html";
-  // }
+  if (localStorage.length < 1) {
+    window.location = "./../index.html";
+  }
   let data;
   await fetch("./../projects", {
     method: "GET",
@@ -33,7 +69,7 @@ window.onpageshow = async () => {
     .then(res => res.json())
     .then(res => {
       data = res.data;
-      data.map(async i => {
+      data.map(i => {
         console.log(i);
         let max;
         let progress;
@@ -87,10 +123,14 @@ window.onpageshow = async () => {
                   </div>
                 </div>
               </div>
-              <div class="card-action">
-                <a class="waves-effect waves-light btn-flat" onClick="showDetails(${i.projectId})"
-                  >Ver mas</a
-                >
+              <div class="card-action  row">
+                <div class="col l8 offset-l2 col s12 valign-wrapper">
+                  <a class="col s7 waves-effect waves-light btn-flat" style="color: #2f2c24" onClick="showDetails(${i.projectId})"
+                    >Ver mas</a
+                  >
+                  <button onClick="setData('${i.projectName}','${i.projectDes}',${i.status}, ${i.projectId})" class="col s2 waves-effect waves-light btn modal-trigger" data-target="idModal" href="#idModal" id="edit"><i class="large material-icons">edit</i></button>
+                  <button onClick="deleteProject(${i.projectId})" class="col s2 waves-effect waves-light offset-s1 btn" id="delete"><i class="large material-icons">delete</i></button>
+                </div>
               </div>
             </div>
           </div>

@@ -1,0 +1,26 @@
+#projectName {
+  display: block;
+  text-transform: uppercase;
+}
+
+div.card-action {
+  margin-bottom: 0px;
+  padding-bottom: 0px !important;
+}
+
+#projectContainer {
+  background: #f0efec;
+}
+
+button.btn {
+  background-color: #8a9fbf;
+}
+
+#delete {
+  background-color: red;
+}
+
+#projectName,
+#projectDesc {
+  color: #f0efec;
+}

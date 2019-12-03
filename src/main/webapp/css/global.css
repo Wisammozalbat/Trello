@@ -3,7 +3,7 @@
 }
 
 body {
-  background: linear-gradient(80deg, #30348e, #7b80ce);
+  background: linear-gradient(90deg, #30348e, #7b80ce);
   font-family: Lucida Sans;
   max-height: 100%;
 }
@@ -22,6 +22,7 @@ body {
 }
 
 body {
+  background-repeat: repeat-y;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }

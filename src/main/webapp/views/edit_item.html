@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./../css/materialize.min.css" />
+    <link rel="stylesheet" href="./../css/items.css" />
+    <link rel="stylesheet" href="./../css/global.css" />
+    <title>Dashboard</title>
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-wrapper" id="navBar">
+        <a href="#" class="brand-logo" id="logo">MY TRELLO</a>
+        <ul id="nav-mobile" class="right">
+          <li>
+            <a href="./../newProject.html" id="newProject">New project</a>
+          </li>
+          <li>
+            <a href="./../index.html" id="logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="content" class="content">
+      <div class="center" id="topPart">
+        <h4 class="center" id="projectDesc">Edit Item</h4>
+      </div>
+
+      <div
+        class="row"
+        id="projectContainer"
+        style="width: 50%; background: transparent;"
+      >
+        <div class="col s12">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text" style="background: #f0efec">
+              <div class="row">
+                <div class="input-field sol s6">
+                  <input type="text" name="iName" id="iName" value="" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field sol s6">
+                  <input type="text" name="iDesc" id="iDesc" value="" />
+                </div>
+              </div>
+              <div class="row">
+                <label>Status</label>
+                <select class="browser-default" name="status" id="iStatus">
+                  <option value="" disabled selected id="dStatus"></option>
+                  <option value="1">Pendiente</option>
+                  <option value="2">En progreso</option>
+                  <option value="3">Culminado</option>
+                </select>
+              </div>
+              <div class="card-action" id="submit" align="center"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./../js/logout.js"></script>
+    <script src="./../js/edit_item.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+</html>
